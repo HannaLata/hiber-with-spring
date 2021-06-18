@@ -7,10 +7,12 @@ import com.hannalata.factory.H2Factory;
 import com.hannalata.factory.PostgresFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
+@ComponentScan("com.hannalata")
 public class AppConfig {
 
     @Bean
@@ -27,14 +29,7 @@ public class AppConfig {
         return new PostgresFactory();
     }
 
-    @Bean
-    public UserDAO getUserDAO() {
-        return new UserDAO();
-    }
 
-    @Bean
-    public ItemDAO getItemDAO() {
-        return new ItemDAO();
-    }
+
 
 }
