@@ -1,12 +1,12 @@
 package com.hannalata.dao;
 
-import com.hannalata.config.DatabaseConfig;
-import com.hannalata.factory.ConnectionFactory;
+import com.hannalata.config.AppConfig;
 import com.hannalata.model.Item;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import java.util.ArrayList;
@@ -15,17 +15,16 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SpringJUnitConfig(DatabaseConfig.class)
+@SpringJUnitConfig(AppConfig.class)
+@ActiveProfiles("test")
 class ItemDAOTest {
 
     @Autowired
-    ConnectionFactory connectionFactory;
-    ItemDAO itemDAO = new ItemDAO();
+    ItemDAO itemDAO;
 
     List<Item> items;
     @BeforeEach
     void setUp() {
-        itemDAO.setConnectionFactory(connectionFactory);
        items = new ArrayList<>();
         Item item = new Item("itemCode", "item name",
                 12345, 5);

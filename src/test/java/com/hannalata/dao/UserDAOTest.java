@@ -1,11 +1,11 @@
 package com.hannalata.dao;
 
-import com.hannalata.config.DatabaseConfig;
-import com.hannalata.factory.ConnectionFactory;
+import com.hannalata.config.AppConfig;
 import com.hannalata.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import java.util.ArrayList;
@@ -13,17 +13,16 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringJUnitConfig(DatabaseConfig.class)
+@SpringJUnitConfig(AppConfig.class)
+@ActiveProfiles("test")
 class UserDAOTest {
 
     @Autowired
-    ConnectionFactory connectionFactory;
-    UserDAO userDAO = new UserDAO();
+    UserDAO userDAO;
 
     List<User> users;
     @BeforeEach
     void setUp() {
-        userDAO.setConnectionFactory(connectionFactory);
         users = new ArrayList<>();
         User user = new User("myhailovna", "monolit7",
                 "Hanna", "Lata", "test@gmail.com", "0975554433");
