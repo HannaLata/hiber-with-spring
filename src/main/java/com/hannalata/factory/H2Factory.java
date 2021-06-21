@@ -8,9 +8,15 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
 
 import java.util.Properties;
 
+@Component
+@Qualifier(value = "h2")
+@Profile("test")
 public class H2Factory implements ConnectionFactory {
 
     private SessionFactory sessionFactory;

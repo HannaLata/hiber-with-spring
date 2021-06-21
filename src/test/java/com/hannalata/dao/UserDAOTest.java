@@ -2,6 +2,7 @@ package com.hannalata.dao;
 
 import com.hannalata.config.AppConfig;
 import com.hannalata.model.User;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +30,6 @@ class UserDAOTest {
         users.add(user);
     }
 
-    //@AfterEach
-    //void tearDown() {
-    //   users.forEach(it -> UserDAO.delete(it));
-    //}
 
     @Test
     void saveAndGetAndDelete() {
